@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Stock Recommender</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="main-container">
+    <div class="card">
+      <h1>🌟 AI Stock Recommender</h1>
+      <p>Select your preferences and get AI-powered stock picks!</p>
+      <form onsubmit="showRecommendations(event)">
+        <label for="industry">📂 Industry:</label>
+        <select id="industry" required>
+          <option value="tech">Technology</option>
+          <option value="pharma">Pharma</option>
+          <option value="finance">Finance</option>
+          <option value="energy">Energy</option>
+        </select>
+
+        <label for="risk">⚖ Risk Level:</label>
+        <select id="risk" required>
+          <option value="low">Low Risk</option>
+          <option value="medium">Medium Risk</option>
+          <option value="high">High Risk</option>
+        </select>
+        <button type="submit">✨ Get Recommendations</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function showRecommendations(event) {
+    event.preventDefault();
+
+    const industry = document.getElementById('industry').value;
+    const risk = document.getElementById('risk').value;
+
+    const recommendations = {
+      tech: {
+        low: ['Apple (AAPL)', 'Microsoft (MSFT)', 'Intel (INTC)'],
+        medium: ['NVIDIA (NVDA)', 'Adobe (ADBE)', 'AMD'],
+        high: ['Palantir (PLTR)', 'Snowflake (SNOW)', 'Coinbase (COIN)']
+      },
+      pharma: {
+        low: ['Pfizer (PFE)', 'Johnson & Johnson (JNJ)', 'Merck (MRK)'],
+        medium: ['Moderna (MRNA)', 'Gilead (GILD)', 'Bayer'],
+        high: ['BioNTech (BNTX)', 'Novavax (NVAX)', 'CRISPR (CRSP)']
+      },
+      finance: {
+        low: ['JPMorgan (JPM)', 'Wells Fargo (WFC)', 'Bank of America (BAC)'],
+        medium: ['Goldman Sachs (GS)', 'Morgan Stanley (MS)', 'Amex (AXP)'],
+        high: ['Robinhood (HOOD)', 'SoFi (SOFI)', 'Upstart (UPST)']
+      },
+      energy: {
+        low: ['ExxonMobil (XOM)', 'Chevron (CVX)', 'Shell (SHEL)'],
+        medium: ['BP', 'TotalEnergies', 'Phillips 66'],
+        high: ['Plug Power', 'FuelCell Energy', 'SunPower']
+      }
+    };
+
+const selected = recommendations[industry][risk];
+alert("📊 AI-Recommended Stocks:\n\n🔹 " + selected.join("\n🔹 "));
+}
+</script>
+</body>
+</html>
